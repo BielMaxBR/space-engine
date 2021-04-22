@@ -3,7 +3,6 @@ body {
   margin: 0;
   padding: 0;
 }
-canvas {
+.defalutCanvas0 {
   background: black;
-  width: 100%;
 }
