@@ -1,3 +1,5 @@
+import Engine from './engine/engine.js'
+
 const engine = new Engine({
   width: 300,
   height: 300,
