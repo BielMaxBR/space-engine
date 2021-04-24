@@ -4,13 +4,19 @@ const engine = new Engine({
   update: Update,
   setup: Setup
 })
-console.log(engine.teste)
+
+const Vector = engine.Vector
 
 function Setup() {
-  
+  let v1 = new Vector(3,3)
+  let v2 = new Vector(2,2)
+  v1.div(v2)
+  console.log(v1.toArray())
 }
 
 
 function Update(delta) {
   
 }
+
+engine.init()
