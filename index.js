@@ -19,7 +19,8 @@ function Setup() {
 
 
 function Update(delta) {
-  obj.draw()
+  obj.draw(this.ctx)
+  obj.location.x += 1
 }
 
 engine.init()

@@ -38,7 +38,7 @@ export default function Engine(config) {
     }
       canvas.width = this.width
       canvas.height = this.height
-      
+      canvas.id = 'defaultCanvas0'
       this.ctx = canvas.getContext("2d")
       
       document.body.appendChild(canvas)
