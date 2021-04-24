@@ -36,11 +36,15 @@ export default function Vector(x,y) {
       }
     }
     
-    this.toArray = () => {
+    this.toObject = () => {
       return {
         x: this.x,
         y: this.y
       }
+    }
+    
+    this.toArray = () => {
+      return [this.x, this.y]
     }
   }
   

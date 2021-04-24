@@ -11,9 +11,9 @@ const Vector = engine.Vector
 
 function Setup() {
   let v1 = new Vector(3,3)
-  let v2 = new Vector(2,2)
-  v1.div(v2)
-  console.log(v1.toArray().x)
+  let n1= 2
+  v1.div(n1)
+  console.log(v1.toArray())
 }
 
 
