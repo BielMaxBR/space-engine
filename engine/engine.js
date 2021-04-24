@@ -1,4 +1,5 @@
 import VectorClass from './Vector.js'
+import EntityClass from './Entity.js'
 
 export default function Engine(config) {
   this.width = config.width ? config.width: 300
@@ -11,6 +12,8 @@ export default function Engine(config) {
   
   this.objects = {}
   
+  this.Entity = EntityClass
+
   const userUpdate = config.update ? config.update.bind(this) : ()=>{}
   
   const userSetup = config.setup ? config.setup.bind(this) : ()=>{}

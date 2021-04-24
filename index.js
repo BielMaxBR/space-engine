@@ -14,6 +14,7 @@ function Setup() {
   let n1= 2
   v1.div(n1)
   console.log(v1.toArray())
+  engine.Entity()
 }
 
 
