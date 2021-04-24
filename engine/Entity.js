@@ -1,4 +1,6 @@
 
 export default function(){
-    console.log(this.ctx)
+    this.draw = () => {
+        console.log(this.ctx)
+    }
 }

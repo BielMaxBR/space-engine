@@ -8,18 +8,18 @@ const engine = new Engine({
 })
 
 const Vector = engine.Vector
+const obj = new engine.Entity()
 
 function Setup() {
   let v1 = new Vector(3,3)
   let n1= 2
   v1.div(n1)
   console.log(v1.toArray())
-  engine.Entity()
 }
 
 
 function Update(delta) {
-  
+  obj.draw()
 }
 
 engine.init()
