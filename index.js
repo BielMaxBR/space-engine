@@ -1,3 +1,4 @@
+'use strict';
 import Engine from './engine/engine.js'
 
 const engine = new Engine({
@@ -13,17 +14,18 @@ const obj = new engine.Entity()
 
 function Setup() {
   obj.aceleration.x = 0.01
-  obj.velocity.limit(6)
+  
+  console.log(Vector)
 }
 
 
 function Update(delta) {
   
   obj.update()
-
+  obj.velocity.limit(6)
   if(obj.position.x > this.width) {
     obj.position.x = -10
-    console.log(obj.velocity.x)
+    //console.log(obj.velocity.x)
   }
 }
 

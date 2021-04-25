@@ -1,6 +1,7 @@
 import VectorClass from './Vector.js'
 import EntityClass from './Entity.js'
 
+
 export default function Engine(config) {
   this.width = config.width ? config.width: 300
   
@@ -19,11 +20,11 @@ export default function Engine(config) {
   const userSetup = config.setup ? config.setup.bind(this) : ()=>{}
   
   const userRender = config.render ? config.render.bind(this) : ()=>{}
-  
-  
+
   this.Vector = VectorClass
   
   this.init = () => {
+
     console.log('iniciando setup')
     createCanvas()
     userSetup()
