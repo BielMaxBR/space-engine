@@ -1,5 +1,6 @@
 'use strict';
 import Engine from './engine/engine.js'
+import Planet from './engine/Planet.js';
 
 const engine = new Engine({
   width: 300,
@@ -10,29 +11,30 @@ const engine = new Engine({
 })
 
 const Vector = engine.Vector
-const obj = new engine.Entity()
+
+let planeta = new Planet({
+  tam: 30,
+  mass: 30,
+  color: '#ffaaff'
+})
 
 function Setup() {
-  obj.aceleration.x = 0.01
-  
-  console.log(Vector)
+  planeta.position = new Vector(100,100)
+  planeta.aceleration = 0.01
+  console.log(planeta)
 }
 
 
 function Update(delta) {
+  planeta.update()
   
-  obj.update()
-  obj.velocity.limit(6)
-  if(obj.position.x > this.width) {
-    obj.position.x = -10
-    //console.log(obj.velocity.x)
-  }
 }
 
 function Render() {
   this.clearCanvas()
   
-  obj.draw(this.ctx)
+  planeta.draw(this.ctx)
+
 }
 
 engine.init()

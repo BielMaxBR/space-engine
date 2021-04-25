@@ -1,8 +1,7 @@
 import Vector from "./Vector.js"
 
 export default class Entity {
-  constructor(ctx, position, velocity, aceleration) {
-    this.ctx = ctx ? ctx : null
+  constructor(position, velocity, aceleration) {
 
     this.position = position ? position : new Vector(0,0)
     
@@ -11,7 +10,7 @@ export default class Entity {
     this.aceleration = aceleration ? aceleration : new Vector(0,0)
   }
 
-  draw() {}
+  draw(ctx) {}
   
   update(delta) {}
 
