@@ -1,19 +1,18 @@
 import Vector from "./Vector.js"
 
-export default function(){
-    this.position = new Vector(0,0)
+export default class Entity {
+  constructor(ctx, position, velocity, aceleration) {
+    this.ctx = ctx ? ctx : null
+
+    this.position = position ? position : new Vector(0,0)
     
-    this.velocity = new Vector(0,0)
+    this.velocity = velocity ? velocity : new Vector(0,0)
     
-    this.aceleration = new Vector(0,0)
-    
-    this.draw = (ctx) => {
-        ctx.fillStyle = '#00ff00'
-        ctx.fillRect(this.position.x,this.position.y,10,10)
-    }
-    
-    this.update = () => {
-      this.velocity.add(this.aceleration)
-      this.position.add(this.velocity)
-    }
+    this.aceleration = aceleration ? aceleration : new Vector(0,0)
+  }
+
+  draw() {}
+  
+  update(delta) {}
+
 }
