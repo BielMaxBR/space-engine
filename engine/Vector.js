@@ -63,4 +63,25 @@ export default class Vector {
     return 3;
   }
   
+  static add(v1, v2) {
+    return new Vector(v1.x + v2.x, v1.y + v2.y)
+  }
+  static sub(v1, v2) {
+    return new Vector(v1.x - v2.x, v1.y - v2.y)
+  }
+  static scale(v, n) {
+    return new Vector(v.x * n, v.y * n)
+  }
+  static Vscale(v1, v2) {
+    return new Vector(v1.x * v2.x, v1.y * v2.y)
+  }
+  static length(v) {
+    return Math.sqrt(v.x ** 2 + v.y ** 2)
+  }
+  static normalized(v) {
+    let len = this.length(v)
+    if (len > 0) {
+      this.scale(1 / len)
+    }
+  }
 }
