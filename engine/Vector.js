@@ -2,38 +2,59 @@ export default function Vector(x,y) {
     this.x = x ? x : 0
     this.y = y ? y : 0
     
-    this.add = (Vector) => {
-      this.x += Vector.x
-      this.y += Vector.y 
+    this.add = (v) => {
+      this.x += v.x
+      this.y += v.y 
+      return this
     }
     
-    this.sub = (Vector) => {
-      this.x -= Vector.x
-      this.y -= Vector.y
+    this.sub = (v) => {
+      this.x -= v.x
+      this.y -= v.y
+      return this
     }
     
     
-    this.mult = (number) => {
-      this.x *= number
-      this.y *= number
+    this.scale = (n) => {
+      this.x *= n
+      this.y *= n
+      return this
     }
     
-    this.div = (number) => {
-      this.x /= number
-      this.y /= number
+    this.div = (n) => {
+      this.x /= n
+      this.y /= n
+      return this
     }
     
-    this.mag = () => {
+    this.length = () => {
       return Math.sqrt(
           this.x ** 2 + this.y ** 2
         )
     }
     
     this.normalized = () => {
-      const mag = this.mag()
-      if (mag > 0) {
-        this.div(mag)
+      const len = this.length()
+      if (len > 0) {
+        this.scale(1 / len)
       }
+      return this
+    }
+    
+    this.limit = (s) => {
+      const len = this.length()
+      
+      if (len > s && len > 0) {
+        this.scale(s / len)
+      }
+      
+      return this
+    }
+    
+    this.lerp = (v, t) => {
+      this.x = this.x + (v.x - this.x) * t
+      this.y = this.y + (v.y - this.y) * t
+      return this
     }
     
     this.toObject = () => {

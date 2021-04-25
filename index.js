@@ -5,30 +5,32 @@ const engine = new Engine({
   height: 300,
   update: Update,
   setup: Setup,
+  render: Render
 })
 
 const Vector = engine.Vector
 const obj = new engine.Entity()
 
 function Setup() {
-  let v1 = new Vector(3,3)
-  let n1 = 2
-  v1.div(n1)
-  console.log(v1.toArray())
+  obj.aceleration.x = 0.01
+  obj.velocity.limit(6)
 }
 
 
 function Update(delta) {
-  this.ctx.clearRect(0,0,this.width,this.height)
-  
-  obj.velocity.x = 1
   
   obj.update()
-  obj.draw(this.ctx)
-  
+
   if(obj.position.x > this.width) {
     obj.position.x = -10
+    console.log(obj.velocity.x)
   }
+}
+
+function Render() {
+  this.clearCanvas()
+  
+  obj.draw(this.ctx)
 }
 
 engine.init()

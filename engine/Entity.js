@@ -8,7 +8,7 @@ export default function(){
     this.aceleration = new Vector(0,0)
     
     this.draw = (ctx) => {
-        ctx.fillStyle = '#ffffff'
+        ctx.fillStyle = '#00ff00'
         ctx.fillRect(this.position.x,this.position.y,10,10)
     }
     

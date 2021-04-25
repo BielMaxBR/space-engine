@@ -18,6 +18,9 @@ export default function Engine(config) {
   
   const userSetup = config.setup ? config.setup.bind(this) : ()=>{}
   
+  const userRender = config.render ? config.render.bind(this) : ()=>{}
+  
+  
   this.Vector = VectorClass
   
   this.init = () => {
@@ -27,6 +30,10 @@ export default function Engine(config) {
     console.log('setup pronto')
     console.log('iniciando loop')
     initLoop()
+  }
+  
+  this.clearCanvas = () => {
+    this.ctx.clearRect(0,0,this.width,this.height)
   }
   
   const createCanvas = () => {
@@ -54,7 +61,7 @@ export default function Engine(config) {
       let delta = t - lastUpdate;
       
       userUpdate(delta);
-      render();
+      userRender();
       
       lastUpdate = performance.now()
       window.requestAnimationFrame(loop);
@@ -64,12 +71,4 @@ export default function Engine(config) {
     window.requestAnimationFrame(loop);
   }
   
-  const render = () => {
-    //console.log(this.objects)
-    for (const obj of Object.values(this.objects)) {
-      if (obj.render) {
-        obj.render()
-      }
-    }
-  }
 }
