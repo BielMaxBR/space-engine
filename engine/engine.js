@@ -2,7 +2,9 @@ import VectorClass from './Vector.js'
 import EntityClass from './Entity.js'
 
 
-export default function Engine(config) {
+export default class Engine {
+  constructor(config) {
+    
   this.width = config.width ? config.width: 300
   
   this.height = config.height ? config.height : 300
@@ -11,33 +13,34 @@ export default function Engine(config) {
   
   this.ctx;
   
-  this.objects = {}
-  
   this.Entity = EntityClass
-
-  const userUpdate = config.update ? config.update.bind(this) : ()=>{}
   
-  const userSetup = config.setup ? config.setup.bind(this) : ()=>{}
-  
-  const userRender = config.render ? config.render.bind(this) : ()=>{}
-
   this.Vector = VectorClass
   
-  this.init = () => {
+  
+  this.userUpdate = config.update ? config.update.bind(this) : ()=>{}
+  
+  this.userSetup = config.setup ? config.setup.bind(this) : ()=>{}
+  
+  this.userRender = config.render ? config.render.bind(this) : ()=>{}
 
-    console.log('iniciando setup')
-    createCanvas()
-    userSetup()
-    console.log('setup pronto')
-    console.log('iniciando loop')
-    initLoop()
   }
   
-  this.clearCanvas = () => {
+  init() {
+
+    console.log('iniciando setup')
+    this.createCanvas()
+    this.userSetup()
+    console.log('setup pronto')
+    console.log('iniciando loop')
+    this.initLoop()
+  }
+  
+  clearCanvas() {
     this.ctx.clearRect(0,0,this.width,this.height)
   }
   
-  const createCanvas = () => {
+  createCanvas() {
     let canvas = this.canvas
     if (canvas == null) {
       console.log('criando canvas')
@@ -53,16 +56,16 @@ export default function Engine(config) {
     
   }
   
-  const initLoop = () => {
+  initLoop() {
     console.log('loop rodando')
-    let lastUpdate
+    let lastUpdate = 0
     
     const loop = () => {
       let t = performance.now()
       let delta = t - lastUpdate;
       
-      userUpdate(delta);
-      userRender();
+      this.userUpdate(delta);
+      this.userRender();
       
       lastUpdate = performance.now()
       window.requestAnimationFrame(loop);
@@ -73,3 +76,4 @@ export default function Engine(config) {
   }
   
 }
+  
