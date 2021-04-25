@@ -49,8 +49,10 @@ export default class Vector {
   toArray() {
     return [this.x, this.y]
   }
-  test() {
-    return 3;
+  distance(v) {
+    let dx = v.x - this.x
+    let dy = v.y - this.y
+    return Math.sqrt(dx * dx + dy * dy)
   }
   
   static add(v1, v2) {
@@ -73,5 +75,10 @@ export default class Vector {
     if (len > 0) {
       this.scale(1 / len)
     }
+  }
+  static distance(v1, v2) {
+    let dx = v2.x - v2.x
+    let dy = v2.y - v1.y
+    return Math.sqrt(dx * dx + dy * dy)
   }
 }
