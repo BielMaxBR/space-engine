@@ -38,14 +38,6 @@ export default class Engine {
     this.initLoop()
   }
   
-  append(obj) {
-    this.objects.push(obj)
-  }
-  
-  clearCanvas() {
-    this.ctx.clearRect(0,0,this.width,this.height)
-  }
-  
   createCanvas() {
     let canvas = this.canvas
     if (canvas == null) {
@@ -60,6 +52,14 @@ export default class Engine {
       
       document.body.appendChild(canvas)
     
+  }
+  
+  clearCanvas() {
+    this.ctx.clearRect(0,0,this.width,this.height)
+  }
+  
+  append(obj) {
+    this.objects.push(obj)
   }
   
   renderList() {
