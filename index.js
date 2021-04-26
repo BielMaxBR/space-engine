@@ -14,13 +14,13 @@ const Vector = engine.Vector
 let planeta = new Planet({
   tam: 10,
   mass: 30,
-  color: "rgb(255, 50, 255)"
+  //color: "rgb(255, 50, 255)"
 })
 
 function Setup() {
   planeta.position = new Vector(100,100)
   planeta.aceleration.x = 0.01
-  
+  console.log(planeta.color)
   this.append(planeta)
 }
 

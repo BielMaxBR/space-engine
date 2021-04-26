@@ -8,7 +8,7 @@ export default class Planet extends Entity {
 
         this.tam = config.tam ? config.tam : 5
 
-        this.color = config.color ? config.color : '#ffffff'
+        this.color = config.color ? config.color : 'rgb(' + (Math.floor((Math.random() * 255) + 1)).toString() + ' ,' + (Math.floor((Math.random() * 255) + 1)).toString() + ' ,' + (Math.floor((Math.random() * 255) + 1)).toString() + ' )'
     }
 
     draw(ctx) {
