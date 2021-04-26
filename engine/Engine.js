@@ -71,6 +71,12 @@ export default class Engine {
     }
   }
   
+  printFPS(delta) {
+    this.ctx.fillStyle = "white"
+    this.ctx.fillText(
+      (1/(delta/1000)).toString(), 10, 10)
+  }
+  
   initLoop() {
     console.log('loop rodando')
     let lastUpdate = 0
@@ -81,10 +87,15 @@ export default class Engine {
       
       this.userUpdate(delta)
       this.renderList()
-      this.userRender();
+      this.userRender()
+      this.printFPS(delta)
+      
+      
+      setTimeout(()=>{
+        window.requestAnimationFrame(loop)
+      }, 16 - delta)
       
       lastUpdate = performance.now()
-      window.requestAnimationFrame(loop)
     }
     
     lastUpdate = performance.now()
