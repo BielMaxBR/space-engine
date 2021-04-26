@@ -11,7 +11,9 @@ export default class Engine {
   
   this.canvas = config.canvas ? config.canvas : null
   
-  this.ctx;
+  this.ctx = null
+
+  this.objects = []
   
   this.Entity = EntityClass
   
@@ -36,6 +38,10 @@ export default class Engine {
     this.initLoop()
   }
   
+  append(obj) {
+    this.objects.push(obj)
+  }
+  
   clearCanvas() {
     this.ctx.clearRect(0,0,this.width,this.height)
   }
@@ -56,23 +62,33 @@ export default class Engine {
     
   }
   
+  renderList() {
+    this.clearCanvas()
+    for (const obj of this.objects) {
+      if(obj.draw) {
+        obj.draw(this.ctx)
+      }
+    }
+  }
+  
   initLoop() {
     console.log('loop rodando')
     let lastUpdate = 0
     
     const loop = () => {
       let t = performance.now()
-      let delta = t - lastUpdate;
+      let delta = t - lastUpdate
       
-      this.userUpdate(delta);
+      this.userUpdate(delta)
+      this.renderList()
       this.userRender();
       
       lastUpdate = performance.now()
-      window.requestAnimationFrame(loop);
+      window.requestAnimationFrame(loop)
     }
     
     lastUpdate = performance.now()
-    window.requestAnimationFrame(loop);
+    window.requestAnimationFrame(loop)
   }
   
 }

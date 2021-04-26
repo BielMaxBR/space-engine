@@ -6,8 +6,7 @@ const engine = new Engine({
   width: 500,
   height: 500,
   update: Update,
-  setup: Setup,
-  render: Render
+  setup: Setup
 })
 
 const Vector = engine.Vector
@@ -15,13 +14,14 @@ const Vector = engine.Vector
 let planeta = new Planet({
   tam: 10,
   mass: 30,
-  color: '#ffaaff'
+  color: "rgb(255, 50, 255)"
 })
 
 function Setup() {
   planeta.position = new Vector(100,100)
   planeta.aceleration.x = 0.01
-  console.log(planeta)
+  
+  this.append(planeta)
 }
 
 
@@ -35,11 +35,5 @@ function Update(delta) {
   
 }
 
-function Render() {
-  this.clearCanvas()
-  
-  planeta.draw(this.ctx)
-
-}
 
 engine.init()
