@@ -19,13 +19,14 @@ let planeta = new Planet({
 
 function Setup() {
   planeta.position = new Vector(100,100)
-  planeta.aceleration.x = 0.01
+
   console.log(planeta.color)
   this.append(planeta)
 }
 
 
 function Update(delta) {
+  planeta.applyForce(new Vector(1,0))
   planeta.update()
   planeta.tam = planeta.velocity.x
   

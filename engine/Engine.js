@@ -85,10 +85,11 @@ export default class Engine {
       let t = performance.now()
       let delta = t - lastUpdate
       
-       this.printFPS(delta)
+      
       this.userUpdate(delta)
       this.renderList()
       this.userRender()
+      this.printFPS(delta)
       
       lastUpdate = performance.now()
       window.requestAnimationFrame(loop)

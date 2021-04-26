@@ -61,6 +61,12 @@ export default class Vector {
   static sub(v1, v2) {
     return new Vector(v1.x - v2.x, v1.y - v2.y)
   }
+  static div(v, n) {
+    return new Vector(v.x / n, v.y / n)
+  }
+  static Vdiv(v1, v2) {
+    return new Vector(v1.x / v2.x, v1.y / v2.y)
+  }
   static scale(v, n) {
     return new Vector(v.x * n, v.y * n)
   }
