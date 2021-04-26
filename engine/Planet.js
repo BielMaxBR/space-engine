@@ -2,7 +2,7 @@ import Entity from './Entity.js'
 // classe para um planeta
 export default class Planet extends Entity {
     constructor(config) {
-        super(config.pos, config.vel, config.acl)
+        super(config.position, config.velocity, config.aceleration)
         
         this.mass = config.mass ? config.mass : 10
 
