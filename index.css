@@ -30,6 +30,6 @@ canvas {
   canvas {
     position: relative;
     margin-top: 5%;
-    height: 600px;
+    width: 40%;
   }
 }
