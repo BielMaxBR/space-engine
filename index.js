@@ -37,10 +37,10 @@ function Setup() {
   lua.position = new Vector(250, 50)
   
   terra.velocity.x = 2.9
-  lua.velocity.x = 2.5+terra.velocity.x
+  lua.velocity.x = -2.6+terra.velocity.x
 
   
-  terra.G = 11.5
+  terra.G = 11.7
   sol.G = 10
   
   this.append(terra)
