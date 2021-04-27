@@ -25,7 +25,7 @@ let sol = new Planet({
 
 let lua = new Planet({
   tam: 5,
-  mass: 10,
+  mass: 5,
   color: "#aaaaaa"
 })
 
@@ -35,9 +35,10 @@ function Setup() {
   lua.position = new Vector(250, 50)
   
   terra.velocity.x = 3
-  lua.velocity.x = 5
+  lua.velocity.x = 2.5+terra.velocity.x
+
   
-  terra.G = 12
+  terra.G = 11.5
   sol.G = 10
   
   this.append(terra)
@@ -52,8 +53,11 @@ function Update(delta) {
   
   let f2 = terra.calculateAttraction(lua)
   
+  
   terra.applyForce(f1)
   lua.applyForce(f2)
+  
+  lua.aceleration.add(terra.aceleration)
   
   terra.update()
   sol.update()
