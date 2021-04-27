@@ -93,6 +93,7 @@ export default class Engine {
       this.printFPS(delta)
       
       lastUpdate = performance.now()
+      //setTimeout(loop, 0)
       window.requestAnimationFrame(loop)
     }
     

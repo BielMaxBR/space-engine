@@ -49,7 +49,7 @@ export default class Planet extends Entity {
         
         ctx.beginPath()
         
-        ctx.ellipse(this.position.x,this.position.y,this.tam,this.tam*2, this.velocity.angleRad()+Math.PI/2, 0, 2 * Math.PI)
+        ctx.ellipse(this.position.x,this.position.y,this.tam,this.tam, this.velocity.angleRad()+Math.PI/2, 0, 2 * Math.PI)
 
         ctx.fill()
         
