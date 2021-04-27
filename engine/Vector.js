@@ -59,6 +59,17 @@ export default class Vector {
     let dy = v.y - this.y
     return Math.sqrt(dx * dx + dy * dy)
   }
+  angle() {
+    var rad = Math.atan2(this.y, this.x);
+    var deg = rad * 180 / Math.PI;
+    if (deg < 0) deg = 360 + deg;
+  
+    return deg;
+  };
+  angleRad() {
+    var rad = Math.atan2(this.y, this.x);
+    return rad;
+  };
   
   static add(v1, v2) {
     return new Vector(v1.x + v2.x, v1.y + v2.y)
