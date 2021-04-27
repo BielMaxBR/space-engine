@@ -19,6 +19,7 @@ export default class Engine {
   
   this.Vector = VectorClass
   
+  this.debug = false
   
   this.userUpdate = config.update ? config.update.bind(this) : ()=>{}
   
@@ -66,7 +67,7 @@ export default class Engine {
     this.clearCanvas()
     for (const obj of this.objects) {
       if(obj.draw) {
-        obj.draw(this.ctx)
+        obj.draw(this.ctx, this.debug)
       }
     }
   }

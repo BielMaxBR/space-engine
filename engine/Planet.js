@@ -44,12 +44,34 @@ export default class Planet extends Entity {
       return force;
     }
 
-    draw(ctx) {
+    draw(ctx, debug) {
         ctx.fillStyle = this.color
         
         ctx.beginPath()
+        
         ctx.ellipse(this.position.x,this.position.y,this.tam,this.tam, Math.PI / 4, 0, 2 * Math.PI)
+        
         ctx.fill()
+        
+        ctx.closePath()
+        
+        if (debug) {
+          ctx.beginPath()
+          
+          ctx.lineWidth = 2
+          ctx.lineCap = "square"
+          ctx.strokeStyle = "lightgreen"
+          
+          ctx.moveTo(this.position.x, this.position.y)
+          ctx.lineTo(
+            this.position.x+(this.velocity.x*7),
+            this.position.y+(this.velocity.y*7))
+            
+          ctx.stroke()
+          
+          ctx.closePath()
+        }
+
     }
 
     update() {

@@ -30,11 +30,13 @@ let lua = new Planet({
 })
 
 function Setup() {
+  this.debug = true
+  
   terra.position = new Vector(250, 100)
   sol.position = new Vector(250, 250)
   lua.position = new Vector(250, 50)
   
-  terra.velocity.x = 3
+  terra.velocity.x = 2.9
   lua.velocity.x = 2.5+terra.velocity.x
 
   
@@ -53,7 +55,6 @@ function Update(delta) {
   
   let f2 = terra.calculateAttraction(lua)
   
-  
   terra.applyForce(f1)
   lua.applyForce(f2)
   
@@ -62,6 +63,8 @@ function Update(delta) {
   terra.update()
   sol.update()
   lua.update()
+  
+  
 }
 
 
