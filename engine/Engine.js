@@ -74,7 +74,7 @@ export default class Engine {
   printFPS(delta) {
     this.ctx.fillStyle = "white"
     this.ctx.fillText(
-      (1/(delta/1000)).toString(), 10, 10)
+      Math.floor(1/(delta/1000)), 10, 10)
   }
   
   initLoop() {
