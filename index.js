@@ -11,29 +11,40 @@ const engine = new Engine({
 
 const Vector = engine.Vector
 
-let planeta = new Planet({
+let planeta1 = new Planet({
   tam: 10,
   mass: 30,
-  //color: "rgb(255, 50, 255)"
+  color: "rgb(200, 200, 200)"
 })
 
-function Setup() {
-  planeta.position = new Vector(100,100)
+let planeta2 = new Planet({
+  tam: 20,
+  mass: 130,
+  color: "rgb(240, 240, 240)"
+})
 
-  console.log(planeta.color)
-  this.append(planeta)
+
+function Setup() {
+  planeta1.position = new Vector(250, 100)
+  planeta2.position = new Vector(250, 250)
+  planeta1.velocity.x = 2
+
+  planeta1.G = 10
+  planeta2.G = 10
+  
+  this.append(planeta1)
+  this.append(planeta2)
 }
 
 
 function Update(delta) {
-  planeta.applyForce(new Vector(1,0))
-  planeta.update()
-  planeta.tam = planeta.velocity.x
+
+  let f2to1 = planeta2.calculateAttraction(planeta1)
   
-  if (planeta.position.x-planeta.tam > this.width) {
-    planeta.position.x = -(planeta.tam*2)
-  }
+  planeta1.applyForce(f2to1)
   
+  planeta1.update()
+  planeta2.update()
 }
 
 

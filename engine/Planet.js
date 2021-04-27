@@ -5,17 +5,43 @@ export default class Planet extends Entity {
     constructor(config) {
         super(config.position, config.velocity, config.aceleration)
         
+        this.G = 1
+        
         this.mass = config.mass ? config.mass : 1
 
         this.tam = config.tam ? config.tam : 5
 
         this.color = config.color ? config.color : 'rgb(' + (Math.floor((Math.random() * 255) + 1)).toString() + ' ,' + (Math.floor((Math.random() * 255) + 1)).toString() + ' ,' + (Math.floor((Math.random() * 255) + 1)).toString() + ' )'
     }
+    
+    constrain(number, min, max) {
+      if (number < min) {
+        return min
+      }
+      if (number > max) {
+        return max
+      }
+      return number
+    }
 
     applyForce(force) {
       var f = Vector.div(force,this.mass)
       
       this.aceleration.add(f)
+    }
+
+    calculateAttraction(planet) {
+  
+      var force = Vector.sub(this.position, planet.position)
+      var distance = force.length()
+      force.normalized()
+      
+      distance = this.constrain(distance, 10, 1000)
+      
+      var strength = (this.G * this.mass * planet.mass) / (distance ** 2)
+      force.scale(strength)
+    
+      return force;
     }
 
     draw(ctx) {

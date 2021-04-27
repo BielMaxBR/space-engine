@@ -3,6 +3,11 @@ export default class Vector {
     this.x = x ? x : 0
     this.y = y ? y : 0
   }
+  
+  copy() {
+    return new Vector(this.x, this.y)
+  }
+  
 
   add(v) {
     this.x += v.x
@@ -87,4 +92,6 @@ export default class Vector {
     let dy = v2.y - v1.y
     return Math.sqrt(dx * dx + dy * dy)
   }
+
+  
 }
