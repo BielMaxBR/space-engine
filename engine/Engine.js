@@ -1,6 +1,6 @@
 import VectorClass from './Vector.js'
 import EntityClass from './Entity.js'
-
+import PerlinClass from './Perlin.js'
 
 export default class Engine {
   constructor(config) {
@@ -18,6 +18,8 @@ export default class Engine {
   this.Entity = EntityClass
   
   this.Vector = VectorClass
+  
+  this.Perlin = PerlinClass
   
   this.debug = false
   
