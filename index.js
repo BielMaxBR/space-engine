@@ -51,13 +51,8 @@ function Setup() {
 
 function Update(delta) {
 
-  let f1 = sol.calculateAttraction(terra)
-  
-  let f2 = terra.calculateAttraction(lua)
-  
-  terra.applyForce(f1)
-  lua.applyForce(f2)
-  
+  terra.orbit(sol)
+  lua.orbit(terra)
   lua.aceleration.add(terra.aceleration)
   
   terra.update()

@@ -70,6 +70,30 @@ export default class Vector {
     var rad = Math.atan2(this.y, this.x);
     return rad;
   };
+  constrain(min, max) {
+    let ix = false
+    if (this.x < 0) ix = true
+    let iy = false
+    if (this.y < 0) iy = true
+    
+    if (this.x < min) {
+      this.x = min
+    }
+    if (this.x > max) {
+      this.x = max
+    }
+    if (this.y < min) {
+      this.y = min
+    }
+    if (this.y > max) {
+      this.y = max
+    }
+    
+    if(ix) this.x = -this.x
+    if(iy) this.y = -this.y
+    
+    return this.copy()
+  }
   
   static add(v1, v2) {
     return new Vector(v1.x + v2.x, v1.y + v2.y)

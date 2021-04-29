@@ -43,6 +43,12 @@ export default class Planet extends Entity {
     
       return force;
     }
+    
+    orbit(Planet) {
+      let force = Planet.calculateAttraction(this)
+      
+      this.applyForce(force)
+    }
 
     draw(ctx, debug) {
         ctx.fillStyle = this.color
@@ -75,8 +81,12 @@ export default class Planet extends Entity {
     }
 
     update() {
+      
         this.velocity.add(this.aceleration)
         this.position.add(this.velocity)
         this.aceleration.scale(0)
+        
+        this.velocity.limit(25)
+
     }
 }
