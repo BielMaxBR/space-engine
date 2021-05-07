@@ -80,7 +80,7 @@ export default class Engine {
   }
   
   render(delta) {
-    //this.clearCanvas()
+    this.clearCanvas()
     this.printFPS(delta)
     this.renderList()
     this.userRender()
