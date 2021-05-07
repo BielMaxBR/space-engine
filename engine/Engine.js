@@ -66,7 +66,6 @@ export default class Engine {
   }
   
   renderList() {
-    this.clearCanvas()
     for (const obj of this.objects) {
       if(obj.draw) {
         obj.draw(this.ctx, this.debug)
@@ -80,21 +79,25 @@ export default class Engine {
       Math.floor(1/(delta/1000)), 10, 10)
   }
   
+  render(delta) {
+    //this.clearCanvas()
+    this.printFPS(delta)
+    this.renderList()
+    this.userRender()
+  }
+  
   initLoop() {
     console.log('loop rodando')
     let lastUpdate = 0
     
     const loop = () => {
-      let t = performance.now()
-      let delta = t - lastUpdate
-      
+      let delta = performance.now() - lastUpdate
       
       this.userUpdate(delta)
-      this.renderList()
-      this.userRender()
-      this.printFPS(delta)
+      this.render(delta)
       
       lastUpdate = performance.now()
+      //console.log(Math.floor(delta))
       //setTimeout(loop, 0)
       window.requestAnimationFrame(loop)
     }
