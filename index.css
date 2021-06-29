@@ -17,14 +17,14 @@ canvas {
   display: block;
   image-rendering: pixelated;
 
-  border: 10px solid grey;
+  border: 2px solid grey;
 }
 
 @media(max-width: 500px){
   canvas {
     position: relative;
-    margin-top: 3%;
-    width: 90%;
+    margin-top: 1%;
+    width: 99%;
   }
 }
 @media(min-width: 501px){
