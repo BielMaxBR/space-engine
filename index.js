@@ -30,7 +30,6 @@ let lua = new Planet({
 })
 
 function Setup() {
-  this.debug = true
   
   terra.position = new Vector(250, 100)
   sol.position = new Vector(250, 250)
