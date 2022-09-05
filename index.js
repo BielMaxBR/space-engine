@@ -10,7 +10,7 @@ const engine = new Engine({
 })
 
 const Vector = engine.Vector
-
+window.engine = engine
 let terra = new Planet({
   tam: 15,
   mass: 30,
