@@ -23,11 +23,11 @@ export default class Engine {
 
         this.debug = false
 
-        this.userUpdate = config.update ? config.update.bind(this) : () => {}
+        this.userUpdate = config.update ? config.update.bind(this) : () => { }
 
-        this.userSetup = config.setup ? config.setup.bind(this) : () => {}
+        this.userSetup = config.setup ? config.setup.bind(this) : () => { }
 
-        this.userRender = config.render ? config.render.bind(this) : () => {}
+        this.userRender = config.render ? config.render.bind(this) : () => { }
 
     }
 
