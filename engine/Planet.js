@@ -7,9 +7,10 @@ export default class Planet extends Entity {
 
         this.G = 1
 
-        this.mass = config.mass ? config.mass : 1
-
         this.size = config.size ? config.size : 5
+        
+        this.mass = config.mass ? config.mass : config.size
+        
         this.orbits = []
 
         this.color = config.color ? config.color : 'rgb(' + (Math.floor((Math.random() * 255) + 1)).toString() + ' ,' + (Math.floor((Math.random() * 255) + 1)).toString() + ' ,' + (Math.floor((Math.random() * 255) + 1)).toString() + ' )'

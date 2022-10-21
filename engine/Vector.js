@@ -12,18 +12,22 @@ export default class Vector {
     add(v) {
         this.x += v.x
         this.y += v.y
+        return this
     }
     sub(v) {
         this.x -= v.x
         this.y -= v.y
+        return this
     }
     scale(n) {
         this.x *= n
         this.y *= n
+        return this
     }
     div(n) {
         this.x /= n
         this.y /= n
+        return this
     }
     length() {
         return Math.sqrt(this.x ** 2 + this.y ** 2)
@@ -33,6 +37,7 @@ export default class Vector {
         if (len > 0) {
             this.scale(1 / len)
         }
+        return this
     }
     limit(s) {
         let len = this.length()
@@ -40,10 +45,12 @@ export default class Vector {
         if (len > s && len > 0) {
             this.scale(s / len)
         }
+        return this
     }
     lerp(v, t) {
         this.x = this.x + (v.x - this.x) * t
         this.y = this.y + (v.y - this.y) * t
+        return this
     }
     toObject() {
         return {
@@ -121,6 +128,7 @@ export default class Vector {
         if (len > 0) {
             this.scale(1 / len)
         }
+        return this
     }
     static distance(v1, v2) {
         let dx = v2.x - v2.x
