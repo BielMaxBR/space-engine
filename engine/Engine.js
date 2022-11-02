@@ -29,6 +29,7 @@ export default class Engine {
 
         this.userRender = config.render ? config.render.bind(this) : () => { }
 
+        this.timeoutCode = 0
     }
 
     init() {
@@ -39,6 +40,22 @@ export default class Engine {
         console.log('setup pronto')
         console.log('iniciando loop')
         this.initLoop()
+    }
+
+    calculateBounce(obj1, obj2) {
+        const m1 = obj1.mass
+        const m2 = obj2.mass
+
+        const theta = -Math.atan2(obj2.position.y - obj1.position.y, obj2.position.x - obj1.position.x)
+
+        const v1 = this.Vector.rotate(obj1.velocity, theta)
+        const v2 = this.Vector.rotate(obj2.velocity, theta)
+
+        const u1 = this.Vector.rotate(new this.Vector(v1.x * (m1 - m2) / (m1 + m2) + v2.x * 2 * m2 / (m1 + m2), v1.y), -theta)
+        const u2 = this.Vector.rotate(new this.Vector(v2.x * (m2 - m1) / (m1 + m2) + v1.x * 2 * m1 / (m1 + m2), v2.y), -theta)
+
+        obj1.velocity = u1;
+        obj2.velocity = u2;
     }
 
     createCanvas() {
@@ -112,13 +129,14 @@ export default class Engine {
 
             DrawlastUpdate = performance.now()
 
-            setTimeout(Drawloop, 1000 / 60)
+            this.timeoutCode = setTimeout(Drawloop, 1000 / 60)
         }
         UpdatelastUpdate = performance.now()
         DrawlastUpdate = performance.now()
 
         Updateloop()
         Drawloop()
+        console.log("o código do loop é: ", this.timeoutCode)
     }
 
 }

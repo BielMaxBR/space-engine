@@ -28,7 +28,6 @@ export default class Planet extends Entity {
 
     applyForce(force) {
         var f = Vector.div(force, this.mass)
-
         this.aceleration.add(f)
     }
 

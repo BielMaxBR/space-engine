@@ -102,6 +102,13 @@ export default class Vector {
         return this.copy()
     }
 
+    rotate(angle) {
+        this.x = (this.x * Math.cos(angle)) - (this.y * Math.sin(angle))
+        
+        this.y = (this.x * Math.sin(angle)) + (this.y * Math.cos(angle))
+        return this
+    }
+
     static add(v1, v2) {
         return new Vector(v1.x + v2.x, v1.y + v2.y)
     }
@@ -131,9 +138,19 @@ export default class Vector {
         return this
     }
     static distance(v1, v2) {
-        let dx = v2.x - v2.x
+        let dx = v2.x - v1.x
         let dy = v2.y - v1.y
-        return Math.sqrt(dx * dx + dy * dy)
+        return Math.sqrt(dx ** 2 + dy ** 2)
+    }
+
+    
+    static rotate(v, angle) {
+        let _copy = v.copy()
+        
+        _copy.x = (_copy.x * Math.cos(angle)) - (_copy.y * Math.sin(angle))
+        
+        _copy.y = (_copy.x * Math.sin(angle)) + (_copy.y * Math.cos(angle))
+        return _copy
     }
 
 }
